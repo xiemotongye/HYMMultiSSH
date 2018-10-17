@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, HYMHostStatus) {
 @property (nonatomic, copy) NSString *host;
 @property (nonatomic, copy) NSString *userName;
 @property (nonatomic, copy) NSString *password;
-@property (nonatomic, copy) NSString *terminalText;
+
 @property (nonatomic, assign) HYMHostStatus status;
 @property (nonatomic, assign) BOOL isChoosen;
 

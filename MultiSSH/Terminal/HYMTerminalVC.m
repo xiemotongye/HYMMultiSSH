@@ -7,6 +7,7 @@
 //
 
 #import "HYMTerminalVC.h"
+#import "HYMHostsManager.h"
 #import <NMSSH/NMSSH.h>
 
 @interface HYMTerminalVC () <NMSSHSessionDelegate, NMSSHChannelDelegate, NSTextViewDelegate>
@@ -68,6 +69,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self appendToTextView:@"Connection error"];
                 self.theHost.status = HYMHostStatusOffline;
+                [[NSNotificationCenter defaultCenter] postNotificationName:kHostStatusChanged object:nil];
             });
             
             return;
@@ -82,6 +84,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self appendToTextView:@"Authentication error\n"];
                 self.theHost.status = HYMHostStatusOffline;
+                [[NSNotificationCenter defaultCenter] postNotificationName:kHostStatusChanged object:nil];
                 self.textView.editable = NO;
             });
         }
@@ -95,11 +98,14 @@
             
             NSError *error;
             [self.session.channel startShell:&error];
-            
+            self.theHost.status = HYMHostStatusOnline;
+            [[NSNotificationCenter defaultCenter] postNotificationName:kHostStatusChanged object:nil];
             if (error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self appendToTextView:error.localizedDescription];
                     self.textView.editable = NO;
+                    self.theHost.status = HYMHostStatusOffline;
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kHostStatusChanged object:nil];
                 });
             }
         }

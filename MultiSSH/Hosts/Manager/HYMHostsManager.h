@@ -10,6 +10,9 @@
 #import "HYMHost.h"
 
 static NSString * const kSelectedHostChanged = @"HYMSelectedHostChanged";
+static NSString * const kHostAdded = @"HYMHostAdded";
+static NSString * const kHostRemoved = @"HYMHostRemoved";
+static NSString * const kHostStatusChanged = @"HYMHostStatusChanged";
 
 @interface HYMHostsManager : NSObject
 
@@ -17,10 +20,6 @@ static NSString * const kSelectedHostChanged = @"HYMSelectedHostChanged";
 @property (nonatomic, assign) NSUInteger selectedIndex;
 
 + (instancetype)sharedManager;
-
-- (void)addHost:(HYMHost *)host;
-- (void)removeHost:(HYMHost *)host;
-- (void)dulplicateHost:(HYMHost *)host;
-- (void)editHost:(HYMHost *)orgHost withNewHost:(HYMHost *)newHost;
+- (void)synchronize;
 
 @end

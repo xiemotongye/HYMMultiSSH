@@ -935,6 +935,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="addHost:" target="oKg-eh-15h" id="MIy-NP-3gc"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Is-S2-cun">
                                 <rect key="frame" x="39" y="9" width="30" height="22"/>
@@ -946,6 +949,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="removeHost:" target="oKg-eh-15h" id="rUn-tf-M7q"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b6B-MT-XX7">
                                 <rect key="frame" x="11" y="345" width="114" height="18"/>
@@ -969,8 +975,8 @@
                                     <menu key="menu" id="iDq-ds-CXd">
                                         <items>
                                             <menuItem state="on" image="NSSmartBadgeTemplate" hidden="YES" id="tLi-QE-tFY"/>
-                                            <menuItem title="Item 2" id="EfJ-Cs-2W9"/>
-                                            <menuItem title="Item 3" id="Bpn-68-6ab"/>
+                                            <menuItem title="Duplicate host" id="EfJ-Cs-2W9"/>
+                                            <menuItem title="Edit host..." id="Bpn-68-6ab"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>

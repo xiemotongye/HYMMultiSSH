@@ -16,6 +16,9 @@
     dispatch_once(&onceToken, ^{
         manager = [HYMHostsManager new];
         manager.hosts = [NSMutableArray new];
+        [[NSNotificationCenter defaultCenter] addObserver:manager selector:@selector(synchronize) name:kHostAdded object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:manager selector:@selector(synchronize) name:kHostRemoved object:nil];
+        
     });
     return manager;
 }
@@ -25,5 +28,9 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:kSelectedHostChanged object:[NSNumber numberWithUnsignedInteger:selectedIndex]];
         _selectedIndex = selectedIndex;
     }
+}
+
+- (void)synchronize {
+    
 }
 @end

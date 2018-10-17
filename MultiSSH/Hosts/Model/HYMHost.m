@@ -11,4 +11,13 @@
 
 @implementation HYMHost
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _isChoosen = YES;
+        _status = HYMHostStatusOffline;
+    }
+    return self;
+}
+
 @end

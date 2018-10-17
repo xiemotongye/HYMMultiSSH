@@ -22,11 +22,11 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeHost:) name:kSelectedHostChanged object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTerminal:) name:kHostAdded object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeTerminal:) name:kHostRemoved object:nil];
     self.items = [NSMutableArray new];
     for (HYMHost *host in [HYMHostsManager sharedManager].hosts) {
         HYMTerminalVC *vc = [[HYMTerminalVC alloc] init];
-        
-        host.status = HYMHostStatusOnline;
         vc.theHost = host;
         
         [self.items addObject:vc];
@@ -54,5 +54,23 @@
     [vc removeFromParentViewController];
     [vc.view removeFromSuperview];
     [self addTerminalView:vc];
+}
+
+- (void)addTerminal:(id)sender {
+    HYMHost *host = [sender object];
+    HYMTerminalVC *vc = [[HYMTerminalVC alloc] init];
+    vc.theHost = host;
+    
+    [self.items addObject:vc];
+    [self addTerminalView:vc];
+}
+
+- (void)removeTerminal:(id)sender {
+    NSNumber *numIndex = [sender object];
+    NSInteger index = [numIndex integerValue];
+    NSViewController *vc = self.items[index];
+    [self.items removeObjectAtIndex:index];
+    [vc removeFromParentViewController];
+    [vc.view removeFromSuperview];
 }
 @end

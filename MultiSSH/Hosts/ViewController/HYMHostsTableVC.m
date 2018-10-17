@@ -8,6 +8,7 @@
 
 #import "HYMHostsTableVC.h"
 #import "HYMHostsManager.h"
+#import "HYMConfigWindowController.h"
 
 static NSString * const kCheckboxCellIdentifier = @"HYMCheckBoxID";
 static NSString * const kHostCellIdentifier = @"HYMHostID";
@@ -23,18 +24,23 @@ static NSString * const kStatusCellIdentifier = @"HYMStatusID";
 
 @interface HYMHostsTableVC ()<NSTableViewDelegate, NSTableViewDataSource>
 
+@property (nonatomic, strong) HYMConfigWindowController *configWindow;
+
 @end
 
 @implementation HYMHostsTableVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hostAdded:) name:kHostAdded object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:kHostStatusChanged object:nil];
     
     self.checkboxAll.objectValue = @0;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
 
+#pragma mark - IBActions
 - (IBAction)clickCheckboxAll:(id)sender {
     if ([self.checkboxAll.objectValue isEqual:@0]) {
         for (HYMHost *host in [HYMHostsManager sharedManager].hosts) {
@@ -46,6 +52,35 @@ static NSString * const kStatusCellIdentifier = @"HYMStatusID";
         }
     }
     [self.tableView reloadData];
+}
+
+- (IBAction)addHost:(id)sender {
+    self.configWindow = [[HYMConfigWindowController alloc] initWithWindowNibName:@"HYMConfigWindowController"];
+    [self.configWindow showWindow:nil];
+}
+
+- (IBAction)removeHost:(id)sender {
+    [[HYMHostsManager sharedManager].hosts removeObjectAtIndex:self.tableView.selectedRow];
+    [[HYMHostsManager sharedManager] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kHostRemoved object:[NSNumber numberWithInteger:self.tableView.selectedRow]];
+    [self.tableView reloadData];
+}
+
+- (void)hostAdded:(id)sender {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+        
+        NSInteger index = [[HYMHostsManager sharedManager].hosts indexOfObject:[sender object]];
+        NSMutableIndexSet *idxSet = [[NSMutableIndexSet alloc] init];
+        [idxSet addIndex:index];
+        [self.tableView selectRowIndexes:idxSet byExtendingSelection:NO];
+    });
+}
+
+- (void)refresh {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
 
 #pragma mark - NSTableViewDataSource
@@ -87,14 +122,6 @@ static NSString * const kStatusCellIdentifier = @"HYMStatusID";
     return nil;
 }
 
-- (BOOL)tableView:(NSTableView *)tableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    NSString *identifier = [tableColumn identifier];
-    if ([identifier isEqualToString:kCheckboxCellIdentifier]) {
-        return YES;
-    }
-    return NO;
-}
-
 - (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSString *identifier = [tableColumn identifier];
 
@@ -109,12 +136,20 @@ static NSString * const kStatusCellIdentifier = @"HYMStatusID";
     }
 }
 
+# pragma mark - NSTableViewDelegate
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectTableColumn:(nullable NSTableColumn *)tableColumn {
     return NO;
 }
 
-# pragma mark - NSTableViewDelegate
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     [HYMHostsManager sharedManager].selectedIndex = self.tableView.selectedRow;
+}
+
+- (BOOL)tableView:(NSTableView *)tableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    NSString *identifier = [tableColumn identifier];
+    if ([identifier isEqualToString:kCheckboxCellIdentifier]) {
+        return YES;
+    }
+    return NO;
 }
 @end

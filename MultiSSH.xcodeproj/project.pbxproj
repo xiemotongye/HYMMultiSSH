@@ -18,6 +18,8 @@
 		987B6BF921759BE800329A6A /* HYMHostsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 987B6BF821759BE800329A6A /* HYMHostsManager.m */; };
 		987B6BFC2175ECA600329A6A /* HYMTerminalContainerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 987B6BFB2175ECA600329A6A /* HYMTerminalContainerVC.m */; };
 		987B6C072175F96E00329A6A /* HYMTerminalVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 987B6C062175F96E00329A6A /* HYMTerminalVC.xib */; };
+		987B6C0B2176DB2600329A6A /* HYMConfigWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 987B6C092176DB2600329A6A /* HYMConfigWindowController.m */; };
+		987B6C0C2176DB2600329A6A /* HYMConfigWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 987B6C0A2176DB2600329A6A /* HYMConfigWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,9 @@
 		987B6BFA2175ECA600329A6A /* HYMTerminalContainerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMTerminalContainerVC.h; sourceTree = "<group>"; };
 		987B6BFB2175ECA600329A6A /* HYMTerminalContainerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMTerminalContainerVC.m; sourceTree = "<group>"; };
 		987B6C062175F96E00329A6A /* HYMTerminalVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HYMTerminalVC.xib; sourceTree = "<group>"; };
+		987B6C082176DB2600329A6A /* HYMConfigWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMConfigWindowController.h; sourceTree = "<group>"; };
+		987B6C092176DB2600329A6A /* HYMConfigWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMConfigWindowController.m; sourceTree = "<group>"; };
+		987B6C0A2176DB2600329A6A /* HYMConfigWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HYMConfigWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +149,9 @@
 			children = (
 				987B6BF221759B5200329A6A /* HYMHostsTableVC.h */,
 				987B6BF321759B5200329A6A /* HYMHostsTableVC.m */,
+				987B6C082176DB2600329A6A /* HYMConfigWindowController.h */,
+				987B6C092176DB2600329A6A /* HYMConfigWindowController.m */,
+				987B6C0A2176DB2600329A6A /* HYMConfigWindowController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -224,6 +232,7 @@
 			files = (
 				98224A4321709BFA00761436 /* Assets.xcassets in Resources */,
 				98224A4621709BFA00761436 /* Main.storyboard in Resources */,
+				987B6C0C2176DB2600329A6A /* HYMConfigWindowController.xib in Resources */,
 				987B6C072175F96E00329A6A /* HYMTerminalVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +313,7 @@
 				987B6BEC21749BC100329A6A /* HYMTerminalVC.m in Sources */,
 				98224A4921709BFA00761436 /* main.m in Sources */,
 				987B6BFC2175ECA600329A6A /* HYMTerminalContainerVC.m in Sources */,
+				987B6C0B2176DB2600329A6A /* HYMConfigWindowController.m in Sources */,
 				98224A3E21709BF600761436 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
