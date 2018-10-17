@@ -38,8 +38,8 @@
 		987B6BEF21758BD700329A6A /* HYMHost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMHost.m; sourceTree = "<group>"; };
 		987B6BF221759B5200329A6A /* HYMHostsTableVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMHostsTableVC.h; sourceTree = "<group>"; };
 		987B6BF321759B5200329A6A /* HYMHostsTableVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMHostsTableVC.m; sourceTree = "<group>"; };
-		987B6BF721759BE800329A6A /* HYMHostsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HYMHostsManager.h; path = MultiSSH/Hosts/Manager/HYMHostsManager.h; sourceTree = SOURCE_ROOT; };
-		987B6BF821759BE800329A6A /* HYMHostsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HYMHostsManager.m; path = MultiSSH/Hosts/Manager/HYMHostsManager.m; sourceTree = SOURCE_ROOT; };
+		987B6BF721759BE800329A6A /* HYMHostsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMHostsManager.h; sourceTree = "<group>"; };
+		987B6BF821759BE800329A6A /* HYMHostsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMHostsManager.m; sourceTree = "<group>"; };
 		987B6BFA2175ECA600329A6A /* HYMTerminalContainerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMTerminalContainerVC.h; sourceTree = "<group>"; };
 		987B6BFB2175ECA600329A6A /* HYMTerminalContainerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMTerminalContainerVC.m; sourceTree = "<group>"; };
 		987B6C062175F96E00329A6A /* HYMTerminalVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HYMTerminalVC.xib; sourceTree = "<group>"; };
@@ -154,8 +154,7 @@
 				987B6BF721759BE800329A6A /* HYMHostsManager.h */,
 				987B6BF821759BE800329A6A /* HYMHostsManager.m */,
 			);
-			name = Manager;
-			path = "New Group";
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +168,8 @@
 				98224A3521709BF600761436 /* Sources */,
 				98224A3621709BF600761436 /* Frameworks */,
 				98224A3721709BF600761436 /* Resources */,
+				889AAFA51FCDE609F761D778 /* [CP] Embed Pods Frameworks */,
+				8014B1FECCB58EF5DD50BA01 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +251,44 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8014B1FECCB58EF5DD50BA01 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MultiSSH/Pods-MultiSSH-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		889AAFA51FCDE609F761D778 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MultiSSH/Pods-MultiSSH-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
