@@ -103,6 +103,7 @@
 		98224A3B21709BF600761436 /* MultiSSH */ = {
 			isa = PBXGroup;
 			children = (
+				987B6C0D217717C000329A6A /* RunScript */,
 				987B6BED21758B9B00329A6A /* Hosts */,
 				987B6BE921749B9500329A6A /* Terminal */,
 				98224A3C21709BF600761436 /* AppDelegate.h */,
@@ -131,7 +132,6 @@
 		987B6BED21758B9B00329A6A /* Hosts */ = {
 			isa = PBXGroup;
 			children = (
-				987B6C0D217717C000329A6A /* RunScript */,
 				987B6BF621759BBC00329A6A /* Manager */,
 				987B6BF521759B6700329A6A /* ViewController */,
 				987B6BF12175997100329A6A /* Model */,
