@@ -46,6 +46,10 @@
     });
 }
 
+- (void)dealloc {
+    [self.session disconnect];
+}
+
 - (void)performCommand {
     if (self.semaphore) {
         self.password = [self.lastCommand substringToIndex:MAX(0, self.lastCommand.length - 1)];

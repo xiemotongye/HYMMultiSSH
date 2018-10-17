@@ -7,7 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "HYMHost.h"
+
+typedef NS_ENUM(NSInteger, HYMConfigType) {
+    HYMConfigTypeAdd = 0,
+    HYMConfigTypeModify,
+};
 
 @interface HYMConfigWindowController : NSWindowController
+
+@property (nonatomic, strong) HYMHost *host;
+@property (nonatomic, assign) HYMConfigType configType;
 
 @end

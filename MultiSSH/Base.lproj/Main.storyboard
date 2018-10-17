@@ -975,8 +975,16 @@
                                     <menu key="menu" id="iDq-ds-CXd">
                                         <items>
                                             <menuItem state="on" image="NSSmartBadgeTemplate" hidden="YES" id="tLi-QE-tFY"/>
-                                            <menuItem title="Duplicate host" id="EfJ-Cs-2W9"/>
-                                            <menuItem title="Edit host..." id="Bpn-68-6ab"/>
+                                            <menuItem title="Duplicate host" id="EfJ-Cs-2W9">
+                                                <connections>
+                                                    <action selector="duplicateHost:" target="oKg-eh-15h" id="FXk-C6-OQh"/>
+                                                </connections>
+                                            </menuItem>
+                                            <menuItem title="Edit host..." id="Bpn-68-6ab">
+                                                <connections>
+                                                    <action selector="modifyHost:" target="oKg-eh-15h" id="Vk3-I5-6aG"/>
+                                                </connections>
+                                            </menuItem>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>

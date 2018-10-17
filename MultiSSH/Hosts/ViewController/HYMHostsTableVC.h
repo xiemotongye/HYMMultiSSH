@@ -16,6 +16,7 @@
 
 @property (weak) IBOutlet NSButton *checkboxAll;
 @property (weak) IBOutlet NSTableView *tableView;
+@property (weak) IBOutlet NSMenu *editMenu;
 @property (weak) IBOutlet HYMGradientBar *bg;
 
 @end

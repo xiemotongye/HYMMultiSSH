@@ -20,6 +20,7 @@ static NSString * const kLocalStorageFile = @"my_hosts_config";
         manager.hosts = [NSMutableArray new];
         [[NSNotificationCenter defaultCenter] addObserver:manager selector:@selector(synchronize) name:kHostAdded object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:manager selector:@selector(synchronize) name:kHostRemoved object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:manager selector:@selector(synchronize) name:kHostModified object:nil];
         
         NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
         NSString *path = [docPath stringByAppendingPathComponent:kLocalStorageFile];

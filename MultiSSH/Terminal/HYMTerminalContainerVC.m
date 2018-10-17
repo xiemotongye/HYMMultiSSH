@@ -24,6 +24,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeHost:) name:kSelectedHostChanged object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTerminal:) name:kHostAdded object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeTerminal:) name:kHostRemoved object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTerminal:) name:kHostModified object:nil];
     self.items = [NSMutableArray new];
     for (HYMHost *host in [HYMHostsManager sharedManager].hosts) {
         HYMTerminalVC *vc = [[HYMTerminalVC alloc] init];
@@ -48,6 +49,7 @@
     [self.view addConstraints:vCons];
 }
 
+# pragma mark - Notifications
 - (void)changeHost:(id)sender {
     NSUInteger index = [[sender object] unsignedIntegerValue];
     NSViewController *vc = _items[index];
@@ -72,5 +74,20 @@
     [self.items removeObjectAtIndex:index];
     [vc removeFromParentViewController];
     [vc.view removeFromSuperview];
+}
+
+- (void)refreshTerminal:(id)sender {
+    HYMHost *host = [sender object];
+    NSInteger index = [[HYMHostsManager sharedManager].hosts indexOfObject:host];
+    
+    HYMTerminalVC *vc = self.items[index];
+    [self.items removeObjectAtIndex:index];
+    [vc removeFromParentViewController];
+    [vc.view removeFromSuperview];
+    
+    vc = [[HYMTerminalVC alloc] init];
+    vc.theHost = host;
+    [self.items addObject:vc];
+    [self addTerminalView:vc];
 }
 @end

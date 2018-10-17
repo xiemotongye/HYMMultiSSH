@@ -25,8 +25,11 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    if (self.host) {
+        self.txtHostIP.stringValue = self.host.host;
+        self.txtUserName.stringValue = self.host.userName;
+        self.txtPassword.stringValue = self.host.password;
+    }
 }
 
 - (BOOL)isIPAddress:(NSString *)txt {
@@ -61,8 +64,16 @@
     if (shouldAbort) {
         return;
     }
-    
-    [self addHost];
+    switch (self.configType) {
+        case HYMConfigTypeAdd:
+            [self addHost];
+            break;
+        case HYMConfigTypeModify:
+            [self modifyHost];
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)addHost {
@@ -76,4 +87,12 @@
     [self close];
 }
 
+- (void)modifyHost {
+    self.host.host = self.txtHostIP.stringValue;
+    self.host.userName = self.txtUserName.stringValue;
+    self.host.password = self.txtPassword.stringValue;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kHostModified object:self.host];
+    [self close];
+}
 @end

@@ -29,6 +29,8 @@
         self.host = [aDecoder decodeObjectForKey:@"host"];
         self.userName = [aDecoder decodeObjectForKey:@"userName"];
         self.password = [aDecoder decodeObjectForKey:@"password"];
+        self.isChoosen = YES;
+        self.status = HYMHostStatusOffline;
     }
     return self;
 }
