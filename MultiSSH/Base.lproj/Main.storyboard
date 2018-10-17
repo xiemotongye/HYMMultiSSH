@@ -774,6 +774,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="runScript:" target="8YG-sh-PPJ" id="vdn-no-HLU"/>
+                                </connections>
                             </button>
                             <button toolTip="Clear" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="56C-AG-3Cm">
                                 <rect key="frame" x="174" y="3" width="82" height="31"/>

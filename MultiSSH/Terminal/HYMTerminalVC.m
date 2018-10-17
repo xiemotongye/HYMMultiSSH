@@ -27,6 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(runScript:) name:kRunScript object:nil];
+    
     self.textView.editable = NO;
     self.textView.selectable = NO;
     self.textView.delegate = self;
@@ -137,6 +139,10 @@
         dispatch_async(self.sshQueue, ^{
             [[self.session channel] write:newCommand error:nil timeout:@10];
         });
+    } else if ([msg containsString:@"(yes/no)"]) {
+        dispatch_async(self.sshQueue, ^{
+            [[self.session channel] write:@"yes\n" error:nil timeout:@10];
+        });
     }
     dispatch_async(dispatch_get_main_queue(), ^{
         [self appendToTextView:msg];
@@ -206,5 +212,24 @@
     }
     
     return YES;
+}
+
+#pragma mark - Notifications
+- (void)runScript:(id)sender {
+    if (!self.theHost.isChoosen || self.theHost.status == HYMHostStatusOffline) {
+        return;
+    }
+    NSString *scriptContent = [sender object];
+    NSError *error = nil;
+    NSString *scriptPath = @"/private/tmp/my_script.sh";
+    [scriptContent writeToFile:scriptPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    
+    [[self.session channel] uploadFile:scriptPath to:scriptPath];
+    [self connect:nil];
+    
+    NSString *newCommand = [NSString stringWithFormat:@"sh %@\n", scriptPath];
+    dispatch_async(self.sshQueue, ^{
+        [[self.session channel] write:newCommand error:nil timeout:@10];
+    });
 }
 @end

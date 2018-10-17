@@ -13,6 +13,7 @@ static NSString * const kSelectedHostChanged = @"HYMSelectedHostChanged";
 static NSString * const kHostAdded = @"HYMHostAdded";
 static NSString * const kHostRemoved = @"HYMHostRemoved";
 static NSString * const kHostModified = @"HYMHostModified";
+static NSString * const kRunScript = @"HYMRunScript";
 static NSString * const kHostStatusChanged = @"HYMHostStatusChanged";
 
 @interface HYMHostsManager : NSObject
