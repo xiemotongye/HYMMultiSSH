@@ -20,6 +20,7 @@
 		987B6C072175F96E00329A6A /* HYMTerminalVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 987B6C062175F96E00329A6A /* HYMTerminalVC.xib */; };
 		987B6C0B2176DB2600329A6A /* HYMConfigWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 987B6C092176DB2600329A6A /* HYMConfigWindowController.m */; };
 		987B6C0C2176DB2600329A6A /* HYMConfigWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 987B6C0A2176DB2600329A6A /* HYMConfigWindowController.xib */; };
+		987B6C102177180C00329A6A /* HYMHostScriptVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 987B6C0F2177180C00329A6A /* HYMHostScriptVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,8 @@
 		987B6C082176DB2600329A6A /* HYMConfigWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMConfigWindowController.h; sourceTree = "<group>"; };
 		987B6C092176DB2600329A6A /* HYMConfigWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMConfigWindowController.m; sourceTree = "<group>"; };
 		987B6C0A2176DB2600329A6A /* HYMConfigWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HYMConfigWindowController.xib; sourceTree = "<group>"; };
+		987B6C0E2177180C00329A6A /* HYMHostScriptVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMHostScriptVC.h; sourceTree = "<group>"; };
+		987B6C0F2177180C00329A6A /* HYMHostScriptVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMHostScriptVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,7 @@
 		987B6BED21758B9B00329A6A /* Hosts */ = {
 			isa = PBXGroup;
 			children = (
+				987B6C0D217717C000329A6A /* RunScript */,
 				987B6BF621759BBC00329A6A /* Manager */,
 				987B6BF521759B6700329A6A /* ViewController */,
 				987B6BF12175997100329A6A /* Model */,
@@ -163,6 +167,15 @@
 				987B6BF821759BE800329A6A /* HYMHostsManager.m */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		987B6C0D217717C000329A6A /* RunScript */ = {
+			isa = PBXGroup;
+			children = (
+				987B6C0E2177180C00329A6A /* HYMHostScriptVC.h */,
+				987B6C0F2177180C00329A6A /* HYMHostScriptVC.m */,
+			);
+			path = RunScript;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +327,7 @@
 				98224A4921709BFA00761436 /* main.m in Sources */,
 				987B6BFC2175ECA600329A6A /* HYMTerminalContainerVC.m in Sources */,
 				987B6C0B2176DB2600329A6A /* HYMConfigWindowController.m in Sources */,
+				987B6C102177180C00329A6A /* HYMHostScriptVC.m in Sources */,
 				98224A3E21709BF600761436 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

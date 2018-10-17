@@ -131,6 +131,13 @@
 #pragma mark - NMSSHChannelDelegate
 - (void)channel:(NMSSHChannel *)channel didReadData:(NSString *)message {
     NSString *msg = [message copy];
+    
+    if ([msg isEqualToString:@"Password:"]) {
+        NSString *newCommand = [NSString stringWithFormat:@"%@\n", self.password];
+        dispatch_async(self.sshQueue, ^{
+            [[self.session channel] write:newCommand error:nil timeout:@10];
+        });
+    }
     dispatch_async(dispatch_get_main_queue(), ^{
         [self appendToTextView:msg];
     });

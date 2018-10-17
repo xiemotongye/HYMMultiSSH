@@ -727,10 +727,10 @@
             </objects>
             <point key="canvasLocation" x="121" y="897"/>
         </scene>
-        <!--View Controller-->
+        <!--Host ScriptVC-->
         <scene sceneID="ryZ-pb-Ikm">
             <objects>
-                <viewController id="8YG-sh-PPJ" sceneMemberID="viewController">
+                <viewController id="8YG-sh-PPJ" customClass="HYMHostScriptVC" sceneMemberID="viewController">
                     <view key="view" id="rBz-wN-lh3">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -765,18 +765,18 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vh6-yq-d36">
-                                <rect key="frame" x="354" y="3" width="82" height="31"/>
+                                <rect key="frame" x="264" y="3" width="172" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="cEH-eF-dTc"/>
-                                    <constraint firstAttribute="width" constant="70" id="vAg-N7-V7G"/>
+                                    <constraint firstAttribute="width" constant="160" id="vAg-N7-V7G"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Run" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bL9-Or-GhZ">
+                                <buttonCell key="cell" type="push" title="Run in selecting hosts" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bL9-Or-GhZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button toolTip="Clear" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="56C-AG-3Cm">
-                                <rect key="frame" x="264" y="3" width="82" height="31"/>
+                                <rect key="frame" x="174" y="3" width="82" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="cCQ-f0-f2Z"/>
                                     <constraint firstAttribute="width" constant="70" id="xRH-Jt-o4l"/>
@@ -785,6 +785,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="clearScript:" target="8YG-sh-PPJ" id="u5u-E9-nFY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -800,6 +803,11 @@
                             <constraint firstItem="7hR-wZ-Js5" firstAttribute="leading" secondItem="rBz-wN-lh3" secondAttribute="leading" constant="20" id="zmY-gY-0Hi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnClear" destination="56C-AG-3Cm" id="fMI-49-DsX"/>
+                        <outlet property="btnRun" destination="Vh6-yq-d36" id="c1D-fJ-S3X"/>
+                        <outlet property="txtScript" destination="poU-qY-ElU" id="x1M-ww-CPK"/>
+                    </connections>
                 </viewController>
                 <customObject id="Utu-3p-Hq5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
