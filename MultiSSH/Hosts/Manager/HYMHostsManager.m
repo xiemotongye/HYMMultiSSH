@@ -8,6 +8,8 @@
 
 #import "HYMHostsManager.h"
 
+static NSString * const kLocalStorageFile = @"my_hosts_config";
+
 @implementation HYMHostsManager
 
 + (instancetype)sharedManager {
@@ -19,6 +21,11 @@
         [[NSNotificationCenter defaultCenter] addObserver:manager selector:@selector(synchronize) name:kHostAdded object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:manager selector:@selector(synchronize) name:kHostRemoved object:nil];
         
+        NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+        NSString *path = [docPath stringByAppendingPathComponent:kLocalStorageFile];
+        if ([NSKeyedUnarchiver unarchiveObjectWithFile:path]) {
+            manager.hosts = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        }
     });
     return manager;
 }
@@ -31,6 +38,8 @@
 }
 
 - (void)synchronize {
-    
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [docPath stringByAppendingPathComponent:kLocalStorageFile];
+    [NSKeyedArchiver archiveRootObject:self.hosts toFile:path];
 }
 @end
