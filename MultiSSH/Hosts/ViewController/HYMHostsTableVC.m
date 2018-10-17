@@ -38,7 +38,9 @@ static NSString * const kStatusCellIdentifier = @"HYMStatusID";
     self.checkboxAll.objectValue = @0;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.editMenu.delegate = self;
+    NSMutableIndexSet *idxSet = [[NSMutableIndexSet alloc] init];
+    [idxSet addIndex:[HYMHostsManager sharedManager].hosts.count - 1];
+    [self.tableView selectRowIndexes:idxSet byExtendingSelection:NO];
 }
 
 - (void)hostAdded:(id)sender {
@@ -80,8 +82,15 @@ static NSString * const kStatusCellIdentifier = @"HYMStatusID";
 
 - (IBAction)removeHost:(id)sender {
     [[HYMHostsManager sharedManager].hosts removeObjectAtIndex:self.tableView.selectedRow];
-    [[HYMHostsManager sharedManager] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kHostRemoved object:[NSNumber numberWithInteger:self.tableView.selectedRow]];
+    
+    NSInteger index = [HYMHostsManager sharedManager].hosts.count - 1;
+    
+    if (index >= 0) {
+        NSMutableIndexSet *idxSet = [[NSMutableIndexSet alloc] init];
+        [idxSet addIndex:index];
+        [self.tableView selectRowIndexes:idxSet byExtendingSelection:NO];
+    }
     [self.tableView reloadData];
 }
 
