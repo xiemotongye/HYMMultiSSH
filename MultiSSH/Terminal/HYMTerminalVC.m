@@ -8,7 +8,7 @@
 
 #import "HYMTerminalVC.h"
 #import "HYMHostsManager.h"
-#import <NMSSH/NMSSH.h>
+#import "NMSSH.h"
 
 @interface HYMTerminalVC () <NMSSHSessionDelegate, NMSSHChannelDelegate, NSTextViewDelegate>
 
@@ -44,12 +44,12 @@
     [super viewDidAppear];
 
     dispatch_once(&_onceToken, ^{
-        [self connect:self];
+        [self connect:nil];
     });
 }
 
 - (void)dealloc {
-    [self.session disconnect];
+    [self.session disconnect:nil];
 }
 
 - (void)performCommand {
@@ -60,68 +60,68 @@
     else {
         NSString *command = [self.lastCommand copy];
         dispatch_async(self.sshQueue, ^{
-            [[self.session channel] write:command error:nil timeout:@10];
+            [[self.session channel] writeCommand:command timeout:@10 success:nil failure:nil];
         });
     }
     
     [self.lastCommand setString:@""];
 }
 
-- (void)connect:(id)sender {
+- (void)connect:(void(^)(NMSSHSession *))complete {
     dispatch_async(self.sshQueue, ^{
-        self.session = [NMSSHSession connectToHost:self.host withUsername:self.userName];
-        self.session.delegate = self;
-        if (!self.session.connected) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self appendToTextView:@"Connection error"];
-                self.theHost.status = HYMHostStatusOffline;
-                [[NSNotificationCenter defaultCenter] postNotificationName:kHostStatusChanged object:nil];
-            });
-            
-            return;
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self appendToTextView:[NSString stringWithFormat:@"ssh %@@%@\n", self.session.username, self.host]];
-        });
-        
-        [self.session authenticateByPassword:self.password];
-        if (!self.session.authorized) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self appendToTextView:@"Authentication error\n"];
-                self.theHost.status = HYMHostStatusOffline;
-                [[NSNotificationCenter defaultCenter] postNotificationName:kHostStatusChanged object:nil];
-                self.textView.editable = NO;
-            });
-        }
-        else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.textView.editable = YES;
-            });
-            
-            self.session.channel.delegate = self;
-            self.session.channel.requestPty = YES;
-            
-            NSError *error;
-            [self.session.channel startShell:&error];
-            self.theHost.status = HYMHostStatusOnline;
-            [[NSNotificationCenter defaultCenter] postNotificationName:kHostStatusChanged object:nil];
+        self.session = [NMSSHSession connectToHost:self.host withUsername:self.userName complete:^(NSError *error) {
             if (error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self appendToTextView:error.localizedDescription];
-                    self.textView.editable = NO;
+                    [self appendToTextView:@"Connection error"];
                     self.theHost.status = HYMHostStatusOffline;
                     [[NSNotificationCenter defaultCenter] postNotificationName:kHostStatusChanged object:nil];
                 });
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self appendToTextView:[NSString stringWithFormat:@"ssh %@@%@\n", self.session.username, self.host]];
+                });
+                
+                [self.session authenticateByPassword:self.password success:^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.textView.editable = YES;
+                    });
+                    self.session.channel.delegate = self;
+                    self.session.channel.requestPty = YES;
+                    
+                    [self.session.channel startShell:^{
+                        self.theHost.status = HYMHostStatusOnline;
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kHostStatusChanged object:nil];
+                    } failure:^(NSError *error) {
+                        if (error) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self appendToTextView:error.localizedDescription];
+                                self.textView.editable = NO;
+                                self.theHost.status = HYMHostStatusOffline;
+                                [[NSNotificationCenter defaultCenter] postNotificationName:kHostStatusChanged object:nil];
+                            });
+                        }
+                    }];
+                    if (complete) {
+                        complete(self.session);
+                    }
+                } failure:^(NSError *error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self appendToTextView:@"Authentication error\n"];
+                        self.theHost.status = HYMHostStatusOffline;
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kHostStatusChanged object:nil];
+                        self.textView.editable = NO;
+                    });
+                }];
             }
-        }
+        }];
+        self.session.delegate = self;
     });
     
 }
 
 - (void)disconnect:(id)sender {
     dispatch_async(self.sshQueue, ^{
-        [self.session disconnect];
+        [self.session disconnect:nil];
     });
 }
 
@@ -137,11 +137,11 @@
     if ([msg isEqualToString:@"Password:"]) {
         NSString *newCommand = [NSString stringWithFormat:@"%@\n", self.password];
         dispatch_async(self.sshQueue, ^{
-            [[self.session channel] write:newCommand error:nil timeout:@10];
+            [[self.session channel] writeCommand:newCommand timeout:@10 success:nil failure:nil];
         });
     } else if ([msg containsString:@"(yes/no)"]) {
         dispatch_async(self.sshQueue, ^{
-            [[self.session channel] write:@"yes\n" error:nil timeout:@10];
+            [[self.session channel] writeCommand:@"yes\n" timeout:@10 success:nil failure:nil];
         });
     }
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -224,12 +224,15 @@
     NSString *scriptPath = @"/private/tmp/my_script.sh";
     [scriptContent writeToFile:scriptPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
     
-    [[self.session channel] uploadFile:scriptPath to:scriptPath];
-    [self connect:nil];
-    
-    NSString *newCommand = [NSString stringWithFormat:@"sh %@\n", scriptPath];
-    dispatch_async(self.sshQueue, ^{
-        [[self.session channel] write:newCommand error:nil timeout:@10];
-    });
+    [[self.session channel] uploadFile:scriptPath to:scriptPath progress:nil success:^{
+        [self connect:^(NMSSHSession *session) {
+            NSString *newCommand = [NSString stringWithFormat:@"sh %@\n", scriptPath];
+            dispatch_async(self.sshQueue, ^{
+                [session.channel writeCommand:newCommand timeout:@10 success:nil failure:nil];
+            });
+        }];
+    } failure:^(NSError *error) {
+        [self connect:nil];
+    }];
 }
 @end

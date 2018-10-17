@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B44F213ECD1260FBA872A94 /* libPods-MultiSSH.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40EA8886CEB7FDF22FC0BF18 /* libPods-MultiSSH.a */; };
 		98224A3E21709BF600761436 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98224A3D21709BF600761436 /* AppDelegate.m */; };
 		98224A4321709BFA00761436 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98224A4221709BFA00761436 /* Assets.xcassets */; };
 		98224A4621709BFA00761436 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98224A4421709BFA00761436 /* Main.storyboard */; };
@@ -21,12 +20,21 @@
 		987B6C0B2176DB2600329A6A /* HYMConfigWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 987B6C092176DB2600329A6A /* HYMConfigWindowController.m */; };
 		987B6C0C2176DB2600329A6A /* HYMConfigWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 987B6C0A2176DB2600329A6A /* HYMConfigWindowController.xib */; };
 		987B6C102177180C00329A6A /* HYMHostScriptVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 987B6C0F2177180C00329A6A /* HYMHostScriptVC.m */; };
+		987B6D3821774B0100329A6A /* NMSSHLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 987B6D1921774B0100329A6A /* NMSSHLogger.m */; };
+		987B6D3921774B0100329A6A /* NMSSHQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 987B6D1C21774B0100329A6A /* NMSSHQueue.m */; };
+		987B6D3A21774B0100329A6A /* socket_helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 987B6D1D21774B0100329A6A /* socket_helper.m */; };
+		987B6D3B21774B0100329A6A /* NMSSHSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 987B6D2321774B0100329A6A /* NMSSHSession.m */; };
+		987B6D3C21774B0100329A6A /* NMSFTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 987B6D2421774B0100329A6A /* NMSFTP.m */; };
+		987B6D3D21774B0100329A6A /* NMSFTPFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 987B6D2721774B0100329A6A /* NMSFTPFile.m */; };
+		987B6D3E21774B0100329A6A /* NMSSHChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 987B6D2821774B0100329A6A /* NMSSHChannel.m */; };
+		987B6D3F21774B0100329A6A /* NMSSH-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 987B6D2E21774B0100329A6A /* NMSSH-Info.plist */; };
+		987B6D4021774B0100329A6A /* libssh2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 987B6D3721774B0100329A6A /* libssh2.a */; };
+		987B6D4321774EB500329A6A /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 987B6D4121774EB500329A6A /* libcrypto.a */; };
+		987B6D4421774EB500329A6A /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 987B6D4221774EB500329A6A /* libssl.a */; };
+		987B6D4721774EF900329A6A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 987B6D4621774EF900329A6A /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		06FCE11CD09BD8BDDD271261 /* Pods-MultiSSH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultiSSH.release.xcconfig"; path = "Pods/Target Support Files/Pods-MultiSSH/Pods-MultiSSH.release.xcconfig"; sourceTree = "<group>"; };
-		40EA8886CEB7FDF22FC0BF18 /* libPods-MultiSSH.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MultiSSH.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D618F50F8D347FF7E2682BA /* Pods-MultiSSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultiSSH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MultiSSH/Pods-MultiSSH.debug.xcconfig"; sourceTree = "<group>"; };
 		98224A3921709BF600761436 /* MultiSSH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiSSH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98224A3C21709BF600761436 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		98224A3D21709BF600761436 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,6 +59,33 @@
 		987B6C0A2176DB2600329A6A /* HYMConfigWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HYMConfigWindowController.xib; sourceTree = "<group>"; };
 		987B6C0E2177180C00329A6A /* HYMHostScriptVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMHostScriptVC.h; sourceTree = "<group>"; };
 		987B6C0F2177180C00329A6A /* HYMHostScriptVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMHostScriptVC.m; sourceTree = "<group>"; };
+		987B6D1921774B0100329A6A /* NMSSHLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMSSHLogger.m; sourceTree = "<group>"; };
+		987B6D1B21774B0100329A6A /* socket_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket_helper.h; sourceTree = "<group>"; };
+		987B6D1C21774B0100329A6A /* NMSSHQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMSSHQueue.m; sourceTree = "<group>"; };
+		987B6D1D21774B0100329A6A /* socket_helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = socket_helper.m; sourceTree = "<group>"; };
+		987B6D1E21774B0100329A6A /* NMSSH+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NMSSH+Protected.h"; sourceTree = "<group>"; };
+		987B6D1F21774B0100329A6A /* NMSSHQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMSSHQueue.h; sourceTree = "<group>"; };
+		987B6D2021774B0100329A6A /* NMSFTPFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMSFTPFile.h; sourceTree = "<group>"; };
+		987B6D2121774B0100329A6A /* NMSSH-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NMSSH-Prefix.pch"; sourceTree = "<group>"; };
+		987B6D2221774B0100329A6A /* NMSSH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMSSH.h; sourceTree = "<group>"; };
+		987B6D2321774B0100329A6A /* NMSSHSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMSSHSession.m; sourceTree = "<group>"; };
+		987B6D2421774B0100329A6A /* NMSFTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMSFTP.m; sourceTree = "<group>"; };
+		987B6D2521774B0100329A6A /* NMSSHChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMSSHChannel.h; sourceTree = "<group>"; };
+		987B6D2621774B0100329A6A /* NMSSHLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMSSHLogger.h; sourceTree = "<group>"; };
+		987B6D2721774B0100329A6A /* NMSFTPFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMSFTPFile.m; sourceTree = "<group>"; };
+		987B6D2821774B0100329A6A /* NMSSHChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMSSHChannel.m; sourceTree = "<group>"; };
+		987B6D2921774B0100329A6A /* NMSSHSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMSSHSession.h; sourceTree = "<group>"; };
+		987B6D2A21774B0100329A6A /* NMSFTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMSFTP.h; sourceTree = "<group>"; };
+		987B6D2C21774B0100329A6A /* NMSSHChannelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMSSHChannelDelegate.h; sourceTree = "<group>"; };
+		987B6D2D21774B0100329A6A /* NMSSHSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMSSHSessionDelegate.h; sourceTree = "<group>"; };
+		987B6D2E21774B0100329A6A /* NMSSH-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NMSSH-Info.plist"; sourceTree = "<group>"; };
+		987B6D3321774B0100329A6A /* libssh2_sftp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libssh2_sftp.h; sourceTree = "<group>"; };
+		987B6D3421774B0100329A6A /* libssh2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libssh2.h; sourceTree = "<group>"; };
+		987B6D3521774B0100329A6A /* libssh2_publickey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libssh2_publickey.h; sourceTree = "<group>"; };
+		987B6D3721774B0100329A6A /* libssh2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssh2.a; sourceTree = "<group>"; };
+		987B6D4121774EB500329A6A /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		987B6D4221774EB500329A6A /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		987B6D4621774EF900329A6A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,37 +93,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B44F213ECD1260FBA872A94 /* libPods-MultiSSH.a in Frameworks */,
+				987B6D4721774EF900329A6A /* libz.tbd in Frameworks */,
+				987B6D4321774EB500329A6A /* libcrypto.a in Frameworks */,
+				987B6D4021774B0100329A6A /* libssh2.a in Frameworks */,
+				987B6D4421774EB500329A6A /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1DEF6D6C204BD748A9B74A07 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8D618F50F8D347FF7E2682BA /* Pods-MultiSSH.debug.xcconfig */,
-				06FCE11CD09BD8BDDD271261 /* Pods-MultiSSH.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		8918CBB5F6120313775E454A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				40EA8886CEB7FDF22FC0BF18 /* libPods-MultiSSH.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		98224A3021709BF600761436 = {
 			isa = PBXGroup;
 			children = (
+				987B6D1721774B0100329A6A /* NMSSH */,
 				98224A3B21709BF600761436 /* MultiSSH */,
 				98224A3A21709BF600761436 /* Products */,
-				1DEF6D6C204BD748A9B74A07 /* Pods */,
-				8918CBB5F6120313775E454A /* Frameworks */,
+				987B6D4521774EF900329A6A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,6 +199,111 @@
 			path = RunScript;
 			sourceTree = "<group>";
 		};
+		987B6D1721774B0100329A6A /* NMSSH */ = {
+			isa = PBXGroup;
+			children = (
+				987B6D1821774B0100329A6A /* NMSSH */,
+				987B6D2F21774B0100329A6A /* NMSSH-OSX */,
+			);
+			path = NMSSH;
+			sourceTree = "<group>";
+		};
+		987B6D1821774B0100329A6A /* NMSSH */ = {
+			isa = PBXGroup;
+			children = (
+				987B6D1A21774B0100329A6A /* Config */,
+				987B6D2121774B0100329A6A /* NMSSH-Prefix.pch */,
+				987B6D2221774B0100329A6A /* NMSSH.h */,
+				987B6D2A21774B0100329A6A /* NMSFTP.h */,
+				987B6D2421774B0100329A6A /* NMSFTP.m */,
+				987B6D2021774B0100329A6A /* NMSFTPFile.h */,
+				987B6D2721774B0100329A6A /* NMSFTPFile.m */,
+				987B6D2621774B0100329A6A /* NMSSHLogger.h */,
+				987B6D1921774B0100329A6A /* NMSSHLogger.m */,
+				987B6D2521774B0100329A6A /* NMSSHChannel.h */,
+				987B6D2821774B0100329A6A /* NMSSHChannel.m */,
+				987B6D2921774B0100329A6A /* NMSSHSession.h */,
+				987B6D2321774B0100329A6A /* NMSSHSession.m */,
+				987B6D2B21774B0100329A6A /* Protocols */,
+				987B6D2E21774B0100329A6A /* NMSSH-Info.plist */,
+			);
+			path = NMSSH;
+			sourceTree = "<group>";
+		};
+		987B6D1A21774B0100329A6A /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				987B6D1B21774B0100329A6A /* socket_helper.h */,
+				987B6D1D21774B0100329A6A /* socket_helper.m */,
+				987B6D1E21774B0100329A6A /* NMSSH+Protected.h */,
+				987B6D1F21774B0100329A6A /* NMSSHQueue.h */,
+				987B6D1C21774B0100329A6A /* NMSSHQueue.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		987B6D2B21774B0100329A6A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				987B6D2C21774B0100329A6A /* NMSSHChannelDelegate.h */,
+				987B6D2D21774B0100329A6A /* NMSSHSessionDelegate.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		987B6D2F21774B0100329A6A /* NMSSH-OSX */ = {
+			isa = PBXGroup;
+			children = (
+				987B6D3021774B0100329A6A /* Libraries */,
+			);
+			path = "NMSSH-OSX";
+			sourceTree = "<group>";
+		};
+		987B6D3021774B0100329A6A /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				987B6D3121774B0100329A6A /* include */,
+				987B6D3621774B0100329A6A /* lib */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		987B6D3121774B0100329A6A /* include */ = {
+			isa = PBXGroup;
+			children = (
+				987B6D3221774B0100329A6A /* libssh2 */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		987B6D3221774B0100329A6A /* libssh2 */ = {
+			isa = PBXGroup;
+			children = (
+				987B6D3321774B0100329A6A /* libssh2_sftp.h */,
+				987B6D3421774B0100329A6A /* libssh2.h */,
+				987B6D3521774B0100329A6A /* libssh2_publickey.h */,
+			);
+			path = libssh2;
+			sourceTree = "<group>";
+		};
+		987B6D3621774B0100329A6A /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				987B6D4121774EB500329A6A /* libcrypto.a */,
+				987B6D4221774EB500329A6A /* libssl.a */,
+				987B6D3721774B0100329A6A /* libssh2.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		987B6D4521774EF900329A6A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				987B6D4621774EF900329A6A /* libz.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -185,12 +311,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98224A4D21709BFA00761436 /* Build configuration list for PBXNativeTarget "MultiSSH" */;
 			buildPhases = (
-				2316053ECAB0E6476F5AD4D7 /* [CP] Check Pods Manifest.lock */,
 				98224A3521709BF600761436 /* Sources */,
 				98224A3621709BF600761436 /* Frameworks */,
 				98224A3721709BF600761436 /* Resources */,
-				889AAFA51FCDE609F761D778 /* [CP] Embed Pods Frameworks */,
-				8014B1FECCB58EF5DD50BA01 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -243,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				987B6D3F21774B0100329A6A /* NMSSH-Info.plist in Resources */,
 				98224A4321709BFA00761436 /* Assets.xcassets in Resources */,
 				98224A4621709BFA00761436 /* Main.storyboard in Resources */,
 				987B6C0C2176DB2600329A6A /* HYMConfigWindowController.xib in Resources */,
@@ -252,69 +376,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		2316053ECAB0E6476F5AD4D7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MultiSSH-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8014B1FECCB58EF5DD50BA01 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MultiSSH/Pods-MultiSSH-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		889AAFA51FCDE609F761D778 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MultiSSH/Pods-MultiSSH-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		98224A3521709BF600761436 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -322,13 +383,20 @@
 			files = (
 				987B6BF421759B5200329A6A /* HYMHostsTableVC.m in Sources */,
 				987B6BF021758BD700329A6A /* HYMHost.m in Sources */,
+				987B6D3A21774B0100329A6A /* socket_helper.m in Sources */,
+				987B6D3B21774B0100329A6A /* NMSSHSession.m in Sources */,
+				987B6D3D21774B0100329A6A /* NMSFTPFile.m in Sources */,
 				987B6BF921759BE800329A6A /* HYMHostsManager.m in Sources */,
+				987B6D3821774B0100329A6A /* NMSSHLogger.m in Sources */,
 				987B6BEC21749BC100329A6A /* HYMTerminalVC.m in Sources */,
 				98224A4921709BFA00761436 /* main.m in Sources */,
 				987B6BFC2175ECA600329A6A /* HYMTerminalContainerVC.m in Sources */,
 				987B6C0B2176DB2600329A6A /* HYMConfigWindowController.m in Sources */,
+				987B6D3E21774B0100329A6A /* NMSSHChannel.m in Sources */,
 				987B6C102177180C00329A6A /* HYMHostScriptVC.m in Sources */,
+				987B6D3921774B0100329A6A /* NMSSHQueue.m in Sources */,
 				98224A3E21709BF600761436 /* AppDelegate.m in Sources */,
+				987B6D3C21774B0100329A6A /* NMSFTP.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,16 +527,20 @@
 		};
 		98224A4E21709BFA00761436 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D618F50F8D347FF7E2682BA /* Pods-MultiSSH.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = UEM78XS769;
+				GCC_PREFIX_HEADER = "NMSSH/NMSSH/NMSSH-Prefix.pch";
 				INFOPLIST_FILE = MultiSSH/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NMSSH/NMSSH-OSX/Libraries/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bilibili.MultiSSH;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -477,16 +549,20 @@
 		};
 		98224A4F21709BFA00761436 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06FCE11CD09BD8BDDD271261 /* Pods-MultiSSH.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = UEM78XS769;
+				GCC_PREFIX_HEADER = "NMSSH/NMSSH/NMSSH-Prefix.pch";
 				INFOPLIST_FILE = MultiSSH/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NMSSH/NMSSH-OSX/Libraries/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bilibili.MultiSSH;
 				PRODUCT_NAME = "$(TARGET_NAME)";
