@@ -1,6 +1,6 @@
 # HYMMultiSSH
 
-![](screenshot.png)
+![screenshot](https://github.com/xiemotongye/HYMMultiSSH/raw/master/screenshot.png)
 
 A ssh GUI Client for multiple hosts.
 
